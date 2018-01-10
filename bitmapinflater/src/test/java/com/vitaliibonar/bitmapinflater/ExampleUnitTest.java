@@ -1,4 +1,4 @@
-package com.vitaliibonar.bitmapinflator;
+package com.vitaliibonar.bitmapinflater;
 
 import org.junit.Test;
 

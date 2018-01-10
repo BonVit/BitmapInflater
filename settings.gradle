@@ -1,1 +1,1 @@
-include ':sample', ':bitmapinflator'
+include ':sample', ':bitmapinflater'
