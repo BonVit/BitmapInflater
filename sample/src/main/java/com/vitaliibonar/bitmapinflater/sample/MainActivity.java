@@ -2,9 +2,8 @@ package com.vitaliibonar.bitmapinflater.sample;
 
 import android.databinding.DataBindingUtil;
 import android.graphics.Bitmap;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.widget.LinearLayout;
+import android.support.v7.app.AppCompatActivity;
 
 import com.vitaliibonar.bitmapinflater.BitmapInflater;
 import com.vitaliibonar.bitmapinflater.ViewSettings;
@@ -20,11 +19,10 @@ public class MainActivity extends AppCompatActivity {
         mBinding = DataBindingUtil.setContentView(this, R.layout.activity_main);
 
         Bitmap bitmap = BitmapInflater.createBitmapFromSettings(ViewSettings.newSettings()
-                .setHeight(100)
-                .setWidth(100)
-                .setBitmapConfig(Bitmap.Config.ARGB_8888)
+                .setHeight(ViewSettings.WRAP_CONTENT)
+                .setWidth(ViewSettings.WRAP_CONTENT)
                 .setLayoutRes(R.layout.activity_main)
-                .setViewGroup(new LinearLayout(this))
+                .setContext(this)
         );
         bitmap.getWidth();
     }
