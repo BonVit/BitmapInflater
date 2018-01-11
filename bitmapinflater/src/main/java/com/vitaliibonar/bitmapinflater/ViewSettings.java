@@ -1,19 +1,18 @@
 package com.vitaliibonar.bitmapinflater;
 
+import android.content.Context;
 import android.graphics.Bitmap;
 import android.support.annotation.LayoutRes;
 import android.view.View;
-import android.view.ViewGroup;
 
 public class ViewSettings {
     public static final int WRAP_CONTENT = -1;
-    public static final int MATCH_PARENT = -2;
 
     private int width;
     private int height;
     private @LayoutRes int layoutRes;
-    private ViewGroup viewGroup;
-    private Bitmap.Config bitmapConfig;
+    private Context context;
+    private Bitmap.Config bitmapConfig = Bitmap.Config.ARGB_8888;
     private Callbacks callbacks;
 
     public static ViewSettings newSettings() {
@@ -50,12 +49,12 @@ public class ViewSettings {
         return this;
     }
 
-    public ViewGroup getViewGroup() {
-        return viewGroup;
+    public Context getContext() {
+        return context;
     }
 
-    public ViewSettings setViewGroup(ViewGroup viewGroup) {
-        this.viewGroup = viewGroup;
+    public ViewSettings setContext(Context context) {
+        this.context = context;
         return this;
     }
 
