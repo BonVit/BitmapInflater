@@ -28,7 +28,6 @@ public class BitmapInflater {
         return createBitmapFromView(v, bitmapConfig);
     }
 
-
     public static Bitmap createBitmapFromLayoutRes(Context context, @LayoutRes int layoutRes, int width, int height, Bitmap.Config bitmapConfig, ViewSettings.Callbacks callbacks) {
         View v = inflateView(context, layoutRes);
         measureView(context, v, width, height);
