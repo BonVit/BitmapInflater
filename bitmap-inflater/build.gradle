@@ -1,12 +1,36 @@
 apply plugin: 'com.android.library'
 
+ext {
+    bintrayRepo = 'android'
+    bintrayName = 'bitmap-inflater'
+
+    publishedGroupId = 'com.vitaliibonar.bitmapinflater'
+    libraryName = 'bitmap-inflater'
+    artifact = 'bitmap-inflater'
+
+    libraryDescription = 'An android library for creating bitmaps from views.'
+
+    siteUrl = 'https://github.com/BonVit/BitmapInflater'
+    gitUrl = 'https://github.com/BonVit/BitmapInflater.git'
+
+    libraryVersion = '1.0.0'
+
+    developerId = 'vitaliibonar'
+    developerName = 'Vitalii Bonar'
+    developerEmail = 'bonarv96@gmail.com'
+
+    licenseName = 'The Apache Software License, Version 2.0'
+    licenseUrl = 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+    allLicenses = ["Apache-2.0"]
+}
+
 android {
     compileSdkVersion 26
     defaultConfig {
         minSdkVersion 14
         targetSdkVersion 26
         versionCode 1
-        versionName "1.0"
+        versionName "1.0.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
@@ -28,3 +52,6 @@ dependencies {
     androidTestImplementation 'com.android.support.test:runner:1.0.1'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
 }
+
+apply from: 'install.gradle'
+apply from: 'bintray.gradle'
