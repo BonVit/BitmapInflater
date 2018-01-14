@@ -8,6 +8,7 @@ import android.util.Log;
 
 import com.vitaliibonar.bitmapinflater.ViewSettings;
 import com.vitaliibonar.bitmapinflater.sample.databinding.ActivityMainBinding;
+import com.vitaliibonar.bitmapinflater.template.CircleTextInflater;
 import com.vitaliibonar.bitmapinflater.template.TextInflater;
 
 public class MainActivity extends AppCompatActivity {
@@ -27,6 +28,17 @@ public class MainActivity extends AppCompatActivity {
                 .setTextColor(R.color.colorPrimary)
                 .setPadding(0)
                 .setBackgroundColor(R.color.colorAccent)
+                .build()
+                .makeBitmap();
+
+        Log.d("TestBitmap", bitmap.toString());
+
+        bitmap = CircleTextInflater.Builder.newBuilder(this)
+                .setText("OD")
+                .setTextColor(R.color.colorAccent)
+                .setBackgroundColor(R.color.colorPrimary)
+                .setTextSize(40)
+                .setPadding(10)
                 .build()
                 .makeBitmap();
 

@@ -5,6 +5,7 @@ import android.graphics.Bitmap;
 import android.support.annotation.LayoutRes;
 import android.view.View;
 
+import com.vitaliibonar.bitmapinflater.BitmapInflater;
 import com.vitaliibonar.bitmapinflater.ViewSettings;
 
 /**
@@ -19,6 +20,9 @@ public abstract class BaseViewInflater {
         viewSettings.setContext(context);
         viewSettings.setLayoutRes(getLayoutRes());
         viewSettings.setCallbacks(this::configView);
+        viewSettings.setWidth(ViewSettings.WRAP_CONTENT);
+        viewSettings.setHeight(ViewSettings.WRAP_CONTENT);
+        viewSettings.setBitmapConfig(Bitmap.Config.ARGB_8888);
     }
 
     public void setWidth(int width) {
@@ -45,7 +49,10 @@ public abstract class BaseViewInflater {
         return viewSettings.getBitmapConfig();
     }
 
+    public Bitmap makeBitmap() {
+        return BitmapInflater.createBitmapFromSettings(viewSettings);
+    }
+
     protected abstract void configView(View v);
     protected abstract @LayoutRes int getLayoutRes();
-    public abstract Bitmap makeBitmap();
 }

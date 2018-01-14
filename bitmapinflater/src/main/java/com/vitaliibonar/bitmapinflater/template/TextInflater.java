@@ -11,7 +11,6 @@ import android.util.TypedValue;
 import android.view.View;
 import android.widget.TextView;
 
-import com.vitaliibonar.bitmapinflater.BitmapInflater;
 import com.vitaliibonar.bitmapinflater.R;
 import com.vitaliibonar.bitmapinflater.template.base.BaseInflaterBuilder;
 import com.vitaliibonar.bitmapinflater.template.base.BaseViewInflater;
@@ -44,7 +43,7 @@ public class TextInflater extends BaseViewInflater {
     private Typeface textTypeface = null;
     private boolean textAllCaps = false;
     @StyleRes
-    private int textStyle;
+    private int textStyle = 0;
 
     public TextInflater(Context context) {
         super(context);
@@ -67,11 +66,6 @@ public class TextInflater extends BaseViewInflater {
             textView.setBackgroundResource(backgroundDrawable);
         }
         textView.setTextAppearance(viewSettings.getContext(), textStyle);
-    }
-
-    @Override
-    public Bitmap makeBitmap() {
-        return BitmapInflater.createBitmapFromSettings(viewSettings);
     }
 
     public String getText() {
@@ -193,7 +187,7 @@ public class TextInflater extends BaseViewInflater {
         }
 
         public Builder setText(String text) {
-            textInflater.setText(text);
+            this.textInflater.setText(text);
             return this;
         }
 
@@ -251,27 +245,27 @@ public class TextInflater extends BaseViewInflater {
         }
 
         public Builder setWidth(int width) {
-            textInflater.setWidth(width);
+            this.textInflater.setWidth(width);
             return this;
         }
 
         public Builder setHeight(int height) {
-            textInflater.setHeight(height);
+            this.textInflater.setHeight(height);
             return this;
         }
 
         public Builder setBitmapConfig(Bitmap.Config bitmapConfig) {
-            textInflater.setBitmapConfig(bitmapConfig);
+            this.textInflater.setBitmapConfig(bitmapConfig);
             return this;
         }
 
         public Builder setBackgroundColor(@ColorRes int backgroundColor) {
-            textInflater.setBackgroundColor(backgroundColor);
+            this.textInflater.setBackgroundColor(backgroundColor);
             return this;
         }
 
         public Builder setBackgroundDrawable(@DrawableRes Integer backgroundDrawable) {
-            textInflater.setBackgroundDrawable(backgroundDrawable);
+            this.textInflater.setBackgroundDrawable(backgroundDrawable);
             return this;
         }
     }
