@@ -30,10 +30,10 @@ public class BitmapInflater {
 
     public static Bitmap createBitmapFromLayoutRes(Context context, @LayoutRes int layoutRes, int width, int height, Bitmap.Config bitmapConfig, ViewSettings.Callbacks callbacks) {
         View v = inflateView(context, layoutRes);
-        measureView(context, v, width, height);
         if (callbacks != null) {
             callbacks.configView(v);
         }
+        measureView(context, v, width, height);
         return createBitmapFromView(v, bitmapConfig);
     }
 

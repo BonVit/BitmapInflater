@@ -8,12 +8,12 @@ import android.view.View;
 public class ViewSettings {
     public static final int WRAP_CONTENT = -1;
 
-    private int width;
-    private int height;
-    private @LayoutRes int layoutRes;
-    private Context context;
+    private int width = 0;
+    private int height = 0;
+    private @LayoutRes int layoutRes = 0;
+    private Context context = null;
     private Bitmap.Config bitmapConfig = Bitmap.Config.ARGB_8888;
-    private Callbacks callbacks;
+    private Callbacks callbacks = null;
 
     public static ViewSettings newSettings() {
         return new ViewSettings();
