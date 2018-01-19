@@ -24,7 +24,7 @@ public class BitmapInflater {
 
     public static Bitmap createBitmapFromLayoutRes(Context context, @LayoutRes int layoutRes, int width, int height, Bitmap.Config bitmapConfig) {
         View v = inflateView(context, layoutRes);
-        measureView(context, v, width, height);
+        measureView(context, v, width, height, null);
         return createBitmapFromView(v, bitmapConfig);
     }
 
@@ -33,7 +33,7 @@ public class BitmapInflater {
         if (callbacks != null) {
             callbacks.configView(v);
         }
-        measureView(context, v, width, height);
+        measureView(context, v, width, height, callbacks);
         return createBitmapFromView(v, bitmapConfig);
     }
 
@@ -47,24 +47,31 @@ public class BitmapInflater {
         return inflater.inflate(layoutRes, viewGroup);
     }
 
-    private static void measureView(Context context, View v, int width, int height) {
+    private static void measureView(Context context, View v, int width, int height, ViewSettings.Callbacks callbacks) {
         if (width < -1 || height < -1) {
             throw new IllegalArgumentException();
         }
 
-        if (width == ViewSettings.WRAP_CONTENT) {
-            width = View.MeasureSpec.makeMeasureSpec(context.getResources().getDisplayMetrics().widthPixels, View.MeasureSpec.AT_MOST);
-        } else {
-            width = View.MeasureSpec.makeMeasureSpec(width, View.MeasureSpec.EXACTLY);
-        }
-
-        if (height == ViewSettings.WRAP_CONTENT) {
-            height = View.MeasureSpec.makeMeasureSpec(context.getResources().getDisplayMetrics().heightPixels, View.MeasureSpec.AT_MOST);
-        } else {
-            height = View.MeasureSpec.makeMeasureSpec(height, View.MeasureSpec.EXACTLY);
-        }
+        width = makeMeasureSpec(context, width);
+        height = makeMeasureSpec(context, height);
 
         v.measure(width, height);
-        v.layout(0, 0, v.getMeasuredWidth(), v.getMeasuredHeight());
+        if (callbacks != null) {
+            int[] size = {v.getMeasuredWidth(), v.getMeasuredHeight()};
+            callbacks.measureView(size);
+            size[0] = makeMeasureSpec(context, size[0]);
+            size[1] = makeMeasureSpec(context, size[1]);
+            v.measure(size[0], size[1]);
+        }
+        v.getRootView().layout(0, 0, v.getMeasuredWidth(), v.getMeasuredHeight());
+    }
+
+    private static int makeMeasureSpec(Context context, int value) {
+        if (value == ViewSettings.WRAP_CONTENT) {
+            value = View.MeasureSpec.makeMeasureSpec(context.getResources().getDisplayMetrics().heightPixels, View.MeasureSpec.AT_MOST);
+        } else {
+            value = View.MeasureSpec.makeMeasureSpec(value, View.MeasureSpec.EXACTLY);
+        }
+        return value;
     }
 }
