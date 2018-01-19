@@ -78,5 +78,10 @@ public class ViewSettings {
 
     public interface Callbacks {
         void configView(View v);
+        /**
+         * size[0] - width
+         * size[1] - height
+         * */
+        void measureView(int[] size);
     }
 }
