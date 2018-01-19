@@ -13,6 +13,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.vitaliibonar.bitmapinflater.R;
+import com.vitaliibonar.bitmapinflater.ViewSettings;
 import com.vitaliibonar.bitmapinflater.template.base.BaseInflaterBuilder;
 import com.vitaliibonar.bitmapinflater.template.base.BaseViewInflater;
 
@@ -44,24 +45,32 @@ public class CircleTextInflater extends BaseViewInflater {
     }
 
     @Override
-    protected void configView(View v) {
-        ViewGroup rootView = v.findViewById(R.id.inflater_circle_root_view);
-        TextView textView = v.findViewById(R.id.inflater_circle_text_view);
+    protected ViewSettings.Callbacks callbacks() {
+        return new ViewSettings.Callbacks() {
+            @Override
+            public void configView(View v) {
+                ViewGroup rootView = v.findViewById(R.id.inflater_circle_root_view);
+                TextView textView = v.findViewById(R.id.inflater_circle_text_view);
 
-        textView.setPadding(padding, padding, padding, padding);
-        textView.setText(text);
-        textView.setTextSize(TypedValue.COMPLEX_UNIT_SP, textSize);
-        textView.setTextColor(viewSettings.getContext().getResources().getColor(textColor));
-        if (textTypeface != null) {
-            textView.setTypeface(textTypeface);
-        }
-        textView.setTextAppearance(viewSettings.getContext(), textStyle);
+                textView.setPadding(padding, padding, padding, padding);
+                textView.setText(text);
+                textView.setTextSize(TypedValue.COMPLEX_UNIT_SP, textSize);
+                textView.setTextColor(viewSettings.getContext().getResources().getColor(textColor));
+                if (textTypeface != null) {
+                    textView.setTypeface(textTypeface);
+                }
+                textView.setTextAppearance(viewSettings.getContext(), textStyle);
 
-        ((GradientDrawable) rootView.getBackground()).setColor(viewSettings.getContext().getResources().getColor(backgroundColor));
-        textView.setTextColor(viewSettings.getContext().getResources().getColor(R.color.colorText));
+                ((GradientDrawable) rootView.getBackground()).setColor(viewSettings.getContext().getResources().getColor(backgroundColor));
+                textView.setTextColor(viewSettings.getContext().getResources().getColor(R.color.colorText));
+            }
 
-        rootView.getLayoutParams().width = Math.max(rootView.getLayoutParams().width, rootView.getLayoutParams().height);
-        rootView.getLayoutParams().height = rootView.getLayoutParams().width;
+            @Override
+            public void measureView(int[] size) {
+                size[0] = Math.max(size[0], size[1]);
+                size[1] = size[0];
+            }
+        };
     }
 
     @Override

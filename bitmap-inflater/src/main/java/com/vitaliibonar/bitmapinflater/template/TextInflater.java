@@ -12,6 +12,7 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.vitaliibonar.bitmapinflater.R;
+import com.vitaliibonar.bitmapinflater.ViewSettings;
 import com.vitaliibonar.bitmapinflater.template.base.BaseInflaterBuilder;
 import com.vitaliibonar.bitmapinflater.template.base.BaseViewInflater;
 
@@ -50,22 +51,32 @@ public class TextInflater extends BaseViewInflater {
     }
 
     @Override
-    protected void configView(View v) {
-        TextView textView = v.findViewById(R.id.inflater_text_text_view);
+    protected ViewSettings.Callbacks callbacks() {
+        return new ViewSettings.Callbacks() {
+            @Override
+            public void configView(View v) {
+                TextView textView = v.findViewById(R.id.inflater_text_text_view);
 
-        textView.setPadding(paddingLeft, paddingTop, paddingRight, paddingBottom);
-        textView.setText(text);
-        textView.setTextSize(TypedValue.COMPLEX_UNIT_SP, textSize);
-        textView.setTextColor(viewSettings.getContext().getResources().getColor(textColor));
-        textView.setAllCaps(textAllCaps);
-        if (textTypeface != null) {
-            textView.setTypeface(textTypeface);
-        }
-        textView.setBackgroundColor(viewSettings.getContext().getResources().getColor(backgroundColor));
-        if (backgroundDrawable != null) {
-            textView.setBackgroundResource(backgroundDrawable);
-        }
-        textView.setTextAppearance(viewSettings.getContext(), textStyle);
+                textView.setPadding(paddingLeft, paddingTop, paddingRight, paddingBottom);
+                textView.setText(text);
+                textView.setTextSize(TypedValue.COMPLEX_UNIT_SP, textSize);
+                textView.setTextColor(viewSettings.getContext().getResources().getColor(textColor));
+                textView.setAllCaps(textAllCaps);
+                if (textTypeface != null) {
+                    textView.setTypeface(textTypeface);
+                }
+                textView.setBackgroundColor(viewSettings.getContext().getResources().getColor(backgroundColor));
+                if (backgroundDrawable != null) {
+                    textView.setBackgroundResource(backgroundDrawable);
+                }
+                textView.setTextAppearance(viewSettings.getContext(), textStyle);
+            }
+
+            @Override
+            public void measureView(int[] size) {
+
+            }
+        };
     }
 
     public String getText() {

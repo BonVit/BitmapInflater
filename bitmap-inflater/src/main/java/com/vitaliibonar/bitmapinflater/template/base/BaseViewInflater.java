@@ -19,7 +19,7 @@ public abstract class BaseViewInflater {
         viewSettings = ViewSettings.newSettings();
         viewSettings.setContext(context);
         viewSettings.setLayoutRes(getLayoutRes());
-        viewSettings.setCallbacks(this::configView);
+        viewSettings.setCallbacks(callbacks());
         viewSettings.setWidth(ViewSettings.WRAP_CONTENT);
         viewSettings.setHeight(ViewSettings.WRAP_CONTENT);
         viewSettings.setBitmapConfig(Bitmap.Config.ARGB_8888);
@@ -53,6 +53,6 @@ public abstract class BaseViewInflater {
         return BitmapInflater.createBitmapFromSettings(viewSettings);
     }
 
-    protected abstract void configView(View v);
+    protected abstract ViewSettings.Callbacks callbacks();
     protected abstract @LayoutRes int getLayoutRes();
 }
