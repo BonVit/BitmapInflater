@@ -12,11 +12,6 @@ public abstract class BaseActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setBinding(DataBindingUtil.setContentView(this, getLayoutRes()));
-        onActivityCreate(savedInstanceState);
-    }
-
-    protected void onActivityCreate(Bundle savedInstanceState) {
-
     }
 
     protected abstract void setBinding(ViewDataBinding binding);

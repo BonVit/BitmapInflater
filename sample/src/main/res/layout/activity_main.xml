@@ -3,13 +3,20 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
         <Button
             android:id="@+id/activity_main_circle_text_button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/circle_text"/>
+
+        <Button
+            android:id="@+id/activity_main_map_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/map_sample"/>
 
     </LinearLayout>
 </layout>

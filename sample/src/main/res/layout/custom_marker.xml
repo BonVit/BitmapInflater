@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:id="@+id/view2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/rectangle"
+            android:layout_centerHorizontal="true"
+            android:minHeight="40dp"
+            android:minWidth="40dp"
+            android:padding="10dp">
+
+            <TextView
+                android:id="@+id/custom_marker_text_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:background="#ffffff"
+                android:text="Test"
+                android:textAllCaps="true"
+                android:textColor="#c6802a"
+                android:textSize="20sp" />
+        </RelativeLayout>
+
+        <View
+            android:id="@+id/view"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_below="@+id/view2"
+            android:layout_centerHorizontal="true"
+            android:background="@drawable/triangle"
+            android:rotation="180" />
+
+    </RelativeLayout>
+
+</layout>

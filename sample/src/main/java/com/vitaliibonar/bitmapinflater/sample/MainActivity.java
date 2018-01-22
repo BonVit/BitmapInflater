@@ -14,13 +14,15 @@ public class MainActivity extends BaseActivity {
     private ActivityMainBinding mBinding;
 
     @Override
-    protected void onActivityCreate(Bundle savedInstanceState) {
-        super.onActivityCreate(savedInstanceState);
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
 
         mBinding.activityMainCircleTextButton.setOnClickListener(mOnCircleTextButtonClickListener);
+        mBinding.activityMainMapButton.setOnClickListener(mOnMapSampleClickListener);
     }
 
     private View.OnClickListener mOnCircleTextButtonClickListener = view -> startActivity(new Intent(MainActivity.this, CircleTextActivity.class));
+    private View.OnClickListener mOnMapSampleClickListener = view -> startActivity(new Intent(MainActivity.this, ActivityMap.class));
 
     @Override
     protected void setBinding(ViewDataBinding binding) {

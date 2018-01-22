@@ -3,4 +3,7 @@
     <string name="hint_initials">Enter text (e.g. initials)</string>
     <string name="get_image">Get Image</string>
     <string name="circle_text">Circle text</string>
+    <string name="map_sample">Map sample</string>
+    <string name="enter_marker_text">Enter marker\'s text</string>
+    <string name="place_marker_on_center_of_map">Place marker on center of map</string>
 </resources>
