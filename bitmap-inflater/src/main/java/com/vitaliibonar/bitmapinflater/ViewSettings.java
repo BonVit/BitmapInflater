@@ -8,8 +8,8 @@ import android.view.View;
 public class ViewSettings {
     public static final int WRAP_CONTENT = -1;
 
-    private int width = 0;
-    private int height = 0;
+    private int width = WRAP_CONTENT;
+    private int height = WRAP_CONTENT;
     private @LayoutRes int layoutRes = 0;
     private Context context = null;
     private Bitmap.Config bitmapConfig = Bitmap.Config.ARGB_8888;
